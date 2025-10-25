@@ -1376,6 +1376,10 @@ pub fn mainview() ?*MainView {
     return if (current().mainview_) |*mv| mv.dynamic_cast(MainView) else null;
 }
 
+pub fn sync_with_vcs() !void {
+    try project_manager.request_sync_with_vcs();
+}
+
 pub fn mainview_widget() Widget {
     return current().mainview_ orelse @panic("tui main view not found");
 }
