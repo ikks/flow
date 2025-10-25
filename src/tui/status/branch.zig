@@ -64,6 +64,7 @@ pub fn ctx_deinit(self: *Self) void {
 
 fn on_click(self: *Self, _: *ButtonType, _: Widget.Pos) void {
     self.refresh_git_status();
+    tui.sync_with_vcs() catch {};
     command.executeName("show_git_status", .{}) catch {};
 }
 
